@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>产品展示页面</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 主容器 -->
+    <div class="app-container">
+        <!-- 顶部主导航 -->
+        <header class="main-header">
+            <nav class="main-nav" id="mainNav">
+                <div class="nav-item active" data-category="pot">
+                    <div class="nav-icon">
+                        <img src="images/icon.png" alt="Pot">
+                    </div>
+                    <span class="nav-name">Pot Series</span>
+                </div>
+                <div class="nav-item" data-category="pan">
+                    <div class="nav-icon">
+                        <img src="images/icon.png" alt="Pan">
+                    </div>
+                    <span class="nav-name">Pan Series</span>
+                </div>
+                <div class="nav-item" data-category="wok">
+                    <div class="nav-icon">
+                        <img src="images/icon.png" alt="Wok">
+                    </div>
+                    <span class="nav-name">Wok Series</span>
+                </div>
+                <div class="nav-item" data-category="steamer">
+                    <div class="nav-icon">
+                        <img src="images/icon.png" alt="Steamer">
+                    </div>
+                    <span class="nav-name">Steamer Series</span>
+                </div>
+                <div class="nav-item" data-category="pressure">
+                    <div class="nav-icon">
+                        <img src="images/icon.png" alt="Pressure">
+                    </div>
+                    <span class="nav-name">Pressure Series</span>
+                </div>
+            </nav>
+        </header>
+        
+        <!-- 内容容器 -->
+        <div class="content-container">
+            <!-- 卡片模式左侧分类列表 -->
+            <aside class="cards-category-sidebar" id="cardsCategorySidebar" style="display: none;">
+                <h3 class="cards-category-title">Categories</h3>
+                <div class="cards-category-list" id="cardsCategoryList">
+                    <!-- 分类列表将通过JavaScript动态生成 -->
+                </div>
+            </aside>
+            
+            <!-- 主要内容区域 -->
+            <main class="main-content">
+            <!-- 产品详情区域 -->
+            <section class="product-section" id="productSection">
+                <div class="product-card">
+                    <!-- 产品介绍 -->
+                    <div class="product-info">
+                        <!-- 第一行：图标 + 产品名称 -->
+                        <div class="product-header">
+                            <img id="productIcon" src="images/icon.png" alt="Product Icon" class="product-icon">
+                            <span id="productName" class="product-name">Signature-Forest Mushroom Hot Pot</span>
+                        </div>
+                        
+                        <!-- 第二行：标题 -->
+                        <h2 id="productTitle" class="product-title">Premium Cookware Collection</h2>
+                        
+                        <!-- 第三行：介绍语 -->
+                        <p id="productDescription" class="product-intro">Crafted with premium materials for exceptional heat distribution and durability. Perfect for both everyday cooking and professional culinary experiences.</p>
+                    </div>
+                    
+                    <!-- 产品图片 -->
+                    <div class="product-gallery">
+                        <div class="main-image">
+                            <img id="mainProductImage" src="images/product.png" alt="主要产品图片">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 分页导航 -->
+                <nav class="pagination-nav">
+                    <div class="pagination" id="pagination">
+                        <div class="page-btn prev" id="prevBtn">
+                            <div class="btn-symbol"></div>
+                            <span class="btn-text">Prev</span>
+                        </div>
+                        <div class="page-info">
+                            <span id="currentPage">01</span>
+                            <div class="page-separator"></div>
+                            <span id="totalPages">07</span>
+                        </div>
+                        <div class="page-btn next" id="nextBtn">
+                            <span class="btn-text">Next</span>
+                            <div class="btn-symbol"></div>
+                        </div>
+                    </div>
+                </nav>
+            </section>
+            
+            <!-- 卡片列表区域 -->
+            <section class="cards-section" id="cardsSection" style="display: none;">
+                <!-- 顶部描述 -->
+                <div class="cards-header">
+                    <div class="cards-header-content">
+                        <img id="cardsIcon" src="images/icon.png" alt="Product Icon" class="cards-icon">
+                        <p id="cardsDescription" class="cards-description">Image For Reference; Dishes Vary By Location.</p>
+                    </div>
+                </div>
+                
+                <!-- 卡片网格 -->
+                <div class="cards-grid" id="cardsGrid">
+                    <!-- 卡片将通过JavaScript动态生成 -->
+                </div>
+            </section>
+        </main>
+        
+            
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
