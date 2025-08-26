@@ -229,8 +229,8 @@ function initializeMobileOptimizations() {
     if (isMobile) {
         // 防止iOS Safari的回弹效果
         document.addEventListener('touchmove', function(e) {
-            if (e.target.closest('.main-nav') || e.target.closest('.related-products')) {
-                // 允许在主导航和产品列表中滚动
+            if (e.target.closest('.main-nav')) {
+                // 允许在主导航中滚动
                 return;
             }
         }, { passive: true });
@@ -246,7 +246,6 @@ function initializeMobileOptimizations() {
         style.textContent = `
             @media (max-width: 768px) {
                 .nav-item:hover,
-                .related-item:hover,
                 .page-btn:hover {
                     transform: none !important;
                     background: inherit !important;
@@ -262,47 +261,12 @@ function alignProductSection() {
     const mainNavElement = document.querySelector('.main-nav');
     const mainContent = document.querySelector('.main-content');
     const productSection = document.querySelector('.product-section');
-    const sidebar = document.querySelector('.sidebar');
-    
+
     if (!mainNavElement || !mainContent || !productSection) return;
-    
-    // 只在桌面端应用对齐
-    if (window.innerWidth <= 768) {
-        mainContent.style.marginLeft = '0';
-        mainContent.style.justifyContent = 'center';
-        return;
-    }
-    
-    // 如果没有侧边栏，居中显示主内容并取消对齐偏移
-    if (!sidebar) {
-        mainContent.style.marginLeft = '0';
-        mainContent.style.justifyContent = 'center';
-        return;
-    }
-    
-    // 使用requestAnimationFrame确保DOM更新完成
-    requestAnimationFrame(() => {
-        // 获取main-nav的位置和尺寸
-        const mainNavRect = mainNavElement.getBoundingClientRect();
-        const mainNavRight = mainNavRect.right;
-        
-        // 获取product-section的宽度
-        const productSectionStyles = getComputedStyle(productSection);
-        const productSectionWidth = parseFloat(productSectionStyles.width);
-        
-        // 获取main-content的padding
-        const mainContentStyles = getComputedStyle(mainContent);
-        const mainContentPaddingLeft = parseFloat(mainContentStyles.paddingLeft);
-        const mainContentPaddingRight = parseFloat(mainContentStyles.paddingRight);
-        
-        // 计算需要的margin-left值
-        // main-nav右边位置 - product-section宽度 - main-content右padding
-        const requiredMarginLeft = Math.max(0, mainNavRight - productSectionWidth - mainContentPaddingRight);
-        
-        // 应用对齐
-        mainContent.style.marginLeft = `${requiredMarginLeft}px`;
-        mainContent.style.justifyContent = 'flex-start';
-    });
+
+    // 侧边栏已移除，始终居中显示主内容
+    mainContent.style.marginLeft = '0';
+    mainContent.style.justifyContent = 'center';
 }
 
 // 初始化卡片模式分类列表
@@ -645,10 +609,8 @@ function showSingleMode(data) {
     if (productSection) productSection.style.display = 'block';
     if (cardsSection) cardsSection.style.display = 'none';
     
-    // 隐藏卡片模式的左侧分类列表，显示产品侧边栏（若存在）
+    // 隐藏卡片模式的左侧分类列表
     if (cardsCategorySidebar) cardsCategorySidebar.style.display = 'none';
-    const sidebar = document.querySelector('.sidebar');
-    if (sidebar) sidebar.style.display = 'block';
     
     // 检查是否为移动端，移除content-container的cards-mode类
     const isMobile = window.innerWidth <= 768;
@@ -711,10 +673,8 @@ function showCardsMode(data) {
     if (productSection) productSection.style.display = 'none';
     if (cardsSection) cardsSection.style.display = 'block';
     
-    // 显示卡片模式的左侧分类列表，隐藏产品侧边栏（若存在）
+    // 显示卡片模式的左侧分类列表
     if (cardsCategorySidebar) cardsCategorySidebar.style.display = 'block';
-    const sidebar = document.querySelector('.sidebar');
-    if (sidebar) sidebar.style.display = 'none';
     
     // 检查是否为移动端，为content-container添加cards-mode类
     const isMobile = window.innerWidth <= 768;
@@ -938,33 +898,8 @@ function updateMainProductDisplay(product) {
 
 // 滚动产品到中间位置
 function scrollProductToCenter(element) {
-    const sidebar = document.querySelector('.sidebar');
-    if (!sidebar) return;
-    
-    // 检查是否为移动端
-    const isMobile = window.innerWidth <= 768;
-    
-    if (isMobile) {
-        // 移动端：不执行任何滚动操作
-        return;
-    } else {
-        // 桌面端：在sidebar内滚动
-        const elementRect = element.getBoundingClientRect();
-        const sidebarRect = sidebar.getBoundingClientRect();
-        
-        // 计算元素相对于sidebar的位置
-        const elementTop = elementRect.top - sidebarRect.top + sidebar.scrollTop;
-        const sidebarHeight = sidebar.clientHeight;
-        const elementHeight = element.offsetHeight;
-        
-        // 计算滚动位置，使元素居中
-        const scrollTo = elementTop - (sidebarHeight / 2) + (elementHeight / 2);
-        
-        sidebar.scrollTo({
-            top: scrollTo,
-            behavior: 'smooth'
-        });
-    }
+    // 侧边栏已移除，无需滚动处理
+    return;
 }
 
 

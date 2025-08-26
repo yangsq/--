@@ -111,7 +111,7 @@ body {
 /* 主要内容区域 */
 .main-content {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     padding: 0 1.04vw;
     transition: margin-left .5s ease-out;
 }
@@ -613,59 +613,6 @@ body {
     transform: rotate(45deg) translate(-0.1vw, -0.1vw);
 }
 
-/* 侧边栏 */
-.sidebar {
-    position: absolute;
-    top: 0vw;
-    right: 9vw;
-    width: 17vw;
-    height: 100%;
-    z-index: 1000;
-    overflow-y: auto;
-    padding: 15vw 0;
-    /* 隐藏滚动条 */
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE和Edge */
-}
-
-/* 隐藏Webkit浏览器的滚动条 */
-.sidebar::-webkit-scrollbar {
-    display: none;
-}
-
-.sidebar-title {
-    font-size: 1.17vw;
-    margin-bottom: 1.3vw;
-    color: #2c3e50;
-    text-align: center;
-    border-bottom: 0.1vw solid #ecf0f1;
-    padding-bottom: 0.78vw;
-}
-
-.related-products {
-    display: flex;
-    flex-direction: column;
-    gap: 1.8vw;
-}
-
-.related-item {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0;
-    border-radius: 0.7vw;
-    background: #f8f4f3;
-    height: 20vw;
-    cursor: pointer;
-}
-
-.related-item img {
-    max-width: 90%;
-    max-height: 90%;
-    object-fit: contain;
-    border-radius: 0.31vw;
-}
-
 
 
 /* 响应式设计 */
@@ -682,7 +629,6 @@ body {
     
     /* 触摸优化 */
     .category-item,
-    .related-item,
     .page-btn {
         -webkit-tap-highlight-color: rgba(230, 0, 18, 0.1);
         touch-action: manipulation;
@@ -842,31 +788,6 @@ body {
         font-size: 3.5vw;
     }
     
-    .sidebar {
-        position: static;
-        width: 100%;
-        height: auto;
-        padding: 4vw 0;
-        order: 2;
-        overflow-y: visible;
-    }
-    
-    .related-products {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(40vw, 1fr));
-        gap: 4vw;
-        padding: 0 2vw;
-    }
-    
-    .related-item {
-        height: 40vw;
-        border-radius: 2vw;
-    }
-    
-    .related-item img {
-        max-width: 85%;
-        max-height: 85%;
-    }
     
     /* 移动端内容容器 - 默认不使用flex */
     .content-container {
